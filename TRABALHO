@@ -1,0 +1,121 @@
+class Node:
+    def __init__(self, name):
+        self.name = name
+        self.children = []
+
+    def add_child(self, child_node):
+        self.children.append(child_node)
+
+def print_tree(node, level=0, max_levels=None, spacing=4):
+    if max_levels is not None and level >= max_levels:
+        return
+    print(" " * spacing * level + node.name)
+    for child in node.children:
+        if level == 0:  # Adiciona uma linha em branco entre os filhos da raiz
+            print()
+        print_tree(child, level + 1, max_levels, spacing)
+
+
+root = Node("INÍCIO DO CURSO")
+
+
+
+FMC = Node("Fundamentos de matemática para computação")
+MD = Node("Matemática discreta")
+LG = Node("Lógica matemática")
+TG = Node("Teoria dos grafos")
+LF = Node("Linguagens formais e autômatos")
+COMP = Node("Compiladores")
+ICC = Node("Introdução à computabilidade e complexidade")
+
+
+CS = Node("Computação e sociedade")
+CD = Node("Circuitos digitais")
+BD = Node("Banco de dados")
+IHC = Node("Interação humano computador")
+
+
+GA = Node("Geometria Analítica")
+AL = Node("Álgebra linear")
+PO = Node("Pesquisa operacional")
+CAL1A = Node("Cálculo 1A")
+FIS1 = Node("Física 1")
+CAL2A = Node("Cálculo 2A")
+PEA = Node("Probabilidade e estatística A")
+EDO = Node("Equações diferenciais ordinárias")
+CALN = Node("Cálculo numérico")
+IA = Node("Inteligência artificial")
+RC = Node("Redes de computadores")
+SD = Node("Sistemas distribuídos")
+CP = Node("Computação Paralela")
+
+
+IP = Node("Introdução à programação")
+POO = Node("Programação orientada a objetos")
+AED1 = Node("Algoritimos e estruturas de dados 1")
+AED2 = Node("Algoritimos e estruturas de dados 2")
+APA = Node("Análise e projeto de algoritmos")
+SO = Node("Sistemas Operacionais")
+LPP = Node("Linguagense Paradigmas de programação")
+ES = Node("Engenharia de software")
+CG = Node("Computação grafica")
+MPC = Node("Metodologia de pesquisa em computação")
+PFC1 = Node("Projeto final de curso 1")
+PFC2 = Node("Projeto final de curso 2")
+
+FE1 = Node("Física experimental 1")
+
+root.add_child(FMC)
+FMC.add_child(MD)
+MD.add_child(LG)
+MD.add_child(TG)
+FMC.add_child(LF)
+LF.add_child(COMP)
+FMC.add_child(ICC)
+
+
+
+root.add_child(CS)
+CS.add_child(CD)
+CS.add_child(BD)
+CS.add_child(IHC)
+
+
+
+root.add_child(GA)
+GA.add_child(AL)
+AL.add_child(PO)
+GA.add_child(CAL1A)
+CAL1A.add_child(FIS1)
+CAL1A.add_child(CAL2A)
+CAL2A.add_child(EDO)
+EDO.add_child(CALN)
+CAL1A.add_child(PEA)
+PEA.add_child(IA)
+GA.add_child(RC)
+GA.add_child(SD)
+GA.add_child(CP)
+
+
+
+root.add_child(IP)
+IP.add_child(POO)
+IP.add_child(AED1)
+AED1.add_child(AED2)
+AED2.add_child(APA)
+IP.add_child(SO)
+IP.add_child(LPP)
+IP.add_child(ES)
+IP.add_child(CG)
+IP.add_child(MPC)
+IP.add_child(PFC1)
+PFC1.add_child(PFC2)
+
+
+
+root.add_child(FE1)
+
+
+# Imprimir a árvore com no máximo X subárvores
+print_tree(root, max_levels=150, spacing=4)
+
