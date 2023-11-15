@@ -21,11 +21,17 @@ def print_tree(node, level=0, max_levels=None, spacing=4):
 def print_current_node(node):
         print("\nÁrvore atual: "+ node.name)
 
+def clear_terminal():
+    if os.name == 'posix':
+        os.system('clear')
+    elif os.name == 'nt':
+        os.system('cls')
+
 def navigate_tree(node):
     current_node = node
     history = []
 
-    os.system('clear')
+    clear_terminal()
 
     print("A árvore é apresentada em sequência de pré-requisito como também de período seguindo uma ordem temporal esperada para o curso")
 
@@ -40,18 +46,18 @@ def navigate_tree(node):
         choice = input("Opção: ")
 
         if choice == '1':
-            os.system('clear')
+            clear_terminal()
             print("\nÁrvore atual:")
             print_tree(current_node, spacing=4)
         elif choice == '2':
             if current_node.children:
-                os.system('clear')
+                clear_terminal()
                 print("\nEscolha um filho:")
                 for i, child in enumerate(current_node.children):
                     print(f"{i + 1}. {child.name}")
 
                 child_choice = input("Opção: ")
-                os.system('clear')
+                clear_terminal()
                 try:
                     child_index = int(child_choice) - 1
                     if 0 <= child_index < len(current_node.children):
@@ -64,13 +70,13 @@ def navigate_tree(node):
             else:
                 print("O nó atual não possui filhos.")
         elif choice == '3':
-            os.system('clear')
+            clear_terminal()
             if history:
                 current_node = history.pop()
             else:
                 print("Você está na raiz. Não há pai para voltar.")
         elif choice == '0':
-            os.system('clear')
+            clear_terminal()
             break
         else:
             print("Escolha inválida. Tente novamente.")
