@@ -1,6 +1,5 @@
 import os
 
-
 class Node:
     def __init__(self, name):
         self.name = name
@@ -33,7 +32,6 @@ def navigate_tree(node):
 
     clear_terminal()
 
-    print("A árvore é apresentada em sequência de pré-requisito como também de período seguindo uma ordem temporal esperada para o curso")
 
     while True:
         print_current_node(current_node)
@@ -52,6 +50,7 @@ def navigate_tree(node):
         elif choice == '2':
             if current_node.children:
                 clear_terminal()
+                print_current_node(current_node)
                 print("\nEscolha um filho:")
                 for i, child in enumerate(current_node.children):
                     print(f"{i + 1}. {child.name}")
