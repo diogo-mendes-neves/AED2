@@ -12,19 +12,25 @@ class Node:
 def print_tree(node, level=0, max_levels=None, spacing=4):
     if max_levels is not None and level >= max_levels:
         return
-    print(" " * spacing * level + node.name)
+    print(" " * spacing * level +"- "+ node.name)
     for child in node.children:
         if level == 0:  # Adiciona uma linha em branco entre os filhos da raiz
             print()
         print_tree(child, level + 1, max_levels, spacing)
 
+def print_current_node(node):
+        print("\nÁrvore atual: "+ node.name)
+
 def navigate_tree(node):
     current_node = node
     history = []
 
+    os.system('clear')
+
+    print("A árvore é apresentada em sequência de pré-requisito como também de período seguindo uma ordem temporal esperada para o curso")
+
     while True:
-        print("Árvore atual")
-        print (current_node)
+        print_current_node(current_node)
         print("\nEscolha uma ação:")
         print("1. Imprimir árvore atual")
         print("2. Avançar para um filho")
@@ -128,12 +134,10 @@ LF.add_child(COMP)
 FMC.add_child(ICC)
 
 
-
 root.add_child(CS)
 CS.add_child(CD)
 CS.add_child(BD)
 CS.add_child(IHC)
-
 
 
 root.add_child(GA)
@@ -143,13 +147,13 @@ GA.add_child(CAL1A)
 CAL1A.add_child(FIS1)
 CAL1A.add_child(CAL2A)
 CAL2A.add_child(EDO)
+FIS1.add_child(FE1)
 EDO.add_child(CALN)
 CAL1A.add_child(PEA)
 PEA.add_child(IA)
 GA.add_child(RC)
 GA.add_child(SD)
 GA.add_child(CP)
-
 
 
 root.add_child(IP)
@@ -164,11 +168,6 @@ IP.add_child(CG)
 IP.add_child(MPC)
 IP.add_child(PFC1)
 PFC1.add_child(PFC2)
-
-
-
-root.add_child(FE1)
-
 
 navigate_tree(root)
 
